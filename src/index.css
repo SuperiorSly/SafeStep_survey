@@ -1,0 +1,218 @@
+/* ============================================
+   SMART CANE SURVEY — Design System
+   Modern Dark Theme with Glassmorphism
+   ============================================ */
+
+:root {
+  /* ---- Core palette ---- */
+  --color-bg: #0c0f1a;
+  --color-bg-gradient: linear-gradient(145deg, #0c0f1a 0%, #111630 40%, #0f1428 100%);
+  --color-surface: rgba(255, 255, 255, 0.04);
+  --color-surface-hover: rgba(255, 255, 255, 0.07);
+  --color-card: rgba(255, 255, 255, 0.06);
+  --color-card-border: rgba(255, 255, 255, 0.08);
+  --color-card-hover-border: rgba(255, 255, 255, 0.14);
+
+  /* ---- Text ---- */
+  --color-ink: #eef0f6;
+  --color-ink-soft: #9ba3b8;
+  --color-ink-faint: #5a6378;
+
+  /* ---- Accent: Vibrant teal-cyan ---- */
+  --color-accent: #38d9a9;
+  --color-accent-bright: #63e6be;
+  --color-accent-dark: #20c997;
+  --color-accent-glow: rgba(56, 217, 169, 0.15);
+  --color-accent-glow-strong: rgba(56, 217, 169, 0.25);
+
+  /* ---- Signal: Warm amber for CTA ---- */
+  --color-signal: linear-gradient(135deg, #f59f00 0%, #fd7e14 100%);
+  --color-signal-solid: #f59f00;
+  --color-signal-dark: #e8590c;
+  --color-signal-ink: #fff;
+  --color-signal-glow: rgba(245, 159, 0, 0.3);
+
+  /* ---- Danger ---- */
+  --color-danger: #ff6b6b;
+  --color-danger-soft: rgba(255, 107, 107, 0.12);
+
+  /* ---- Lines ---- */
+  --color-line: rgba(255, 255, 255, 0.08);
+  --color-line-strong: rgba(255, 255, 255, 0.14);
+
+  /* ---- Typography ---- */
+  --font-display: 'Noto Kufi Arabic', 'Segoe UI', Tahoma, sans-serif;
+  --font-body: 'IBM Plex Sans Arabic', 'Segoe UI', Tahoma, sans-serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, SFMono-Regular, monospace;
+
+  /* ---- Radii ---- */
+  --radius-sm: 12px;
+  --radius-md: 18px;
+  --radius-lg: 24px;
+  --radius-xl: 32px;
+  --radius-pill: 999px;
+
+  /* ---- Shadows ---- */
+  --shadow-card: 0 2px 8px rgba(0, 0, 0, 0.2), 0 12px 40px rgba(0, 0, 0, 0.15);
+  --shadow-card-hover: 0 4px 12px rgba(0, 0, 0, 0.25), 0 20px 50px rgba(0, 0, 0, 0.2);
+  --shadow-glow: 0 0 30px rgba(56, 217, 169, 0.08);
+
+  color-scheme: dark;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--color-bg);
+  background-image: var(--color-bg-gradient);
+  background-attachment: fixed;
+  color: var(--color-ink);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+}
+
+/* Ambient background orbs */
+body::before,
+body::after {
+  content: '';
+  position: fixed;
+  border-radius: 50%;
+  filter: blur(120px);
+  opacity: 0.35;
+  pointer-events: none;
+  z-index: 0;
+}
+
+body::before {
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(56, 217, 169, 0.12), transparent 70%);
+  top: -150px;
+  right: -100px;
+  animation: drift 20s ease-in-out infinite alternate;
+}
+
+body::after {
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(99, 102, 241, 0.1), transparent 70%);
+  bottom: -100px;
+  left: -100px;
+  animation: drift 25s ease-in-out infinite alternate-reverse;
+}
+
+@keyframes drift {
+  0% { transform: translate(0, 0) scale(1); }
+  100% { transform: translate(40px, -30px) scale(1.15); }
+}
+
+h1,
+h2,
+h3,
+legend {
+  font-family: var(--font-display);
+  margin: 0;
+  color: var(--color-ink);
+}
+
+p {
+  margin: 0;
+}
+
+button {
+  font-family: inherit;
+}
+
+input {
+  font-family: inherit;
+  font-size: inherit;
+}
+
+fieldset {
+  border: none;
+  margin: 0;
+  padding: 0;
+}
+
+legend {
+  padding: 0;
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: var(--color-accent);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* ---- Entrance animations ---- */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.92);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+@keyframes checkBounce {
+  0% { transform: scale(0); }
+  50% { transform: scale(1.2); }
+  100% { transform: scale(1); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
